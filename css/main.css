@@ -87,6 +87,20 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
+   main {
+    /* background-color: black; */
+    padding: 1em;
+  }
+  .playingCard {
+    width: 100px;
+    height: 150px;
+    margin: 1em 0;
+    border-radius: 10px;
+    background-color: crimson;
+    border: solid 3px white;
+    
+  }
+
 /* ==========================================================================
    Helper classes
    ========================================================================== */
