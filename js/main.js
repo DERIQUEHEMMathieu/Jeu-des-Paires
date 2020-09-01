@@ -9,3 +9,4 @@ for (let i = 0; i < 12; i++){
     cardC.appendChild(card);
     divRow.appendChild(cardC);
 }
+
