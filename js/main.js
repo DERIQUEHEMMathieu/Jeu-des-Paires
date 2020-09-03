@@ -92,7 +92,6 @@ function startGame(){
     clearInterval(interval);
 }
 
-
 // @description toggles open and show class to display cards
 var displayCard = function (){
     this.classList.toggle("open");
