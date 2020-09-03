@@ -225,25 +225,9 @@ textarea {
     margin-bottom: 10px;
   }
   
-  .scoreDisplay .stars {
-    margin: 0;
-    padding: 0;
-    display: inline-block;
-    margin: 0 5px 0 0;
-  }
-  
-  .scoreDisplay .stars li {
-    list-style: none;
-    display: inline-block;
-  }
-  
   .scoreDisplay .restart {
     float: right;
     cursor: pointer;
-  }
-  
-  .fa-star {
-    color: #FFD700;
   }
   
   .timer {
@@ -318,11 +302,7 @@ textarea {
     visibility: visible !important;
     opacity: 100 !important;
   }
-  
-  #starRating li {
-    display: inline-block;
-  }
-  
+
   #play-again {
     background-color: #141214;
     padding: 0.7rem 1rem;
