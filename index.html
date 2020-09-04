@@ -15,13 +15,46 @@
     <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Permanent+Marker">
 
     <title>Jeu des paires</title>
+
+    <script type="text/javascript">
+		function date_heure(id)
+		{
+		    date = new Date;
+			annee = date.getFullYear();
+			moi = date.getMonth();
+			mois = new Array('Janvier','F&eacute;vrier','Mars','Avril','Mai','Juin','Juillet','Ao&ucirc;t','Septembre','Octobre','Novembre','D&eacute;cembre');
+			j = date.getDate();
+			jour = date.getDay();
+			jours = new Array('Dimanche','Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi');
+			h = date.getHours();
+			if(h<10)
+			{
+				h = "0"+h;
+			}
+			m = date.getMinutes();
+			if(m<10)
+			{
+				m = "0"+m;
+			}
+			s = date.getSeconds();
+			if(s<10)
+			{
+				s = "0"+s;
+			}
+			resultat = 'Nous sommes le '+jours[jour]+' '+j+' '+mois[moi]+' '+annee+'. Il est '+h+':'+m+':'+s;
+			document.getElementById(id).innerHTML = resultat;
+			setTimeout('date_heure("'+id+'");','1000');
+			return true;
+		}
+        </script>
 </head>
 <body>
   <!-- HEADER -->
   <header>
     <div class="container-fluid bg-dark text-white" style="width: 100%; height: 7em;">
       <h1 class="pt-2 ml-4">Jeu des paires<i class="fa fa-gamepad pl-4"></i></h1>
-      <marquee behavior="" direction="left" class="mt-2 ml-4" style="font-size: large;">Reconstituez les paires pour gagner</marquee>
+      <marquee behavior="" direction="left" class="mt-2 ml-4" style="font-size: large;"><span id="date_heure"></span></marquee>
+      <script type="text/javascript">window.onload = date_heure('date_heure');</script>
     </div>
   </header>
   <!-- End of HEADER -->

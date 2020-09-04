@@ -256,7 +256,7 @@ textarea {
   }
   /* End of Utilities Classes */
 
-  /* Button Style */
+  /* -- Button Style -- */
   #btnNewGame {
     width: 25em;
     height: 8em;
@@ -274,7 +274,7 @@ textarea {
     transform: scale(1.3);
   }
 
-  /* Styles for the score display */
+  /* -- Styles for the score display -- */
   #scoreBoard {
     display: none;
   }
@@ -295,7 +295,7 @@ textarea {
     border-radius: 5px;
   }
 
-  /* animations */
+  /* Animations */
   @keyframes flipInY {
     from {
       transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
@@ -365,6 +365,7 @@ textarea {
       transform: scale3d(1, 1, 1);
     }
   }
+  /* End of Animations */
 
   /* Media queries */
   @media (max-width: 320px) {
@@ -378,7 +379,7 @@ textarea {
     }
   }
 
-  /* For Tablets and larger screens */
+  /* -- For Tablets and larger screens -- */
   @media (min-width: 768px) {
     .container {
       font-size: 22px;
@@ -398,6 +399,7 @@ textarea {
       width: 60%;
     }
   }
+/* End of Media Queries */
 
 /* ==========================================================================
    Helper classes
