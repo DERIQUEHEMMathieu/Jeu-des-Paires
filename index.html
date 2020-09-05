@@ -13,35 +13,36 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Coda">
     <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Permanent+Marker">
+    <link rel="apple-touch-icon" href="img/pair-of-cards.png">
+    <link rel="shortcut icon" href="img/pair-of-cards.ico" type="image/x-icon">
 
     <title>Jeu des paires</title>
 
     <script type="text/javascript">
-		function date_heure(id)
-		{
+		function date_heure(id) {
 		    date = new Date;
 			annee = date.getFullYear();
-			moi = date.getMonth();
+			month = date.getMonth();
 			mois = new Array('Janvier','F&eacute;vrier','Mars','Avril','Mai','Juin','Juillet','Ao&ucirc;t','Septembre','Octobre','Novembre','D&eacute;cembre');
 			j = date.getDate();
 			jour = date.getDay();
 			jours = new Array('Dimanche','Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi');
-			h = date.getHours();
-			if(h<10)
-			{
+            h = date.getHours();
+			if(h<10) {
 				h = "0"+h;
-			}
+            }
+
 			m = date.getMinutes();
-			if(m<10)
-			{
+            if(m<10) {
 				m = "0"+m;
-			}
+            }
+
 			s = date.getSeconds();
-			if(s<10)
-			{
+            if(s<10) {
 				s = "0"+s;
-			}
-			resultat = 'Nous sommes le '+jours[jour]+' '+j+' '+mois[moi]+' '+annee+'. Il est '+h+':'+m+':'+s;
+            }
+
+			resultat = 'Nous sommes le '+jours[jour]+' '+j+' '+mois[month]+' '+annee+'. Il est '+h+':'+m+':'+s;
 			document.getElementById(id).innerHTML = resultat;
 			setTimeout('date_heure("'+id+'");','1000');
 			return true;
@@ -51,7 +52,7 @@
 <body>
   <!-- HEADER -->
   <header>
-    <div class="container-fluid bg-dark text-white" style="width: 100%; height: 7em;">
+    <div class="container-fluid bg-dark text-white" style="width: 100%; height: 10em;">
       <h1 class="pt-2 ml-4">Jeu des paires<i class="fa fa-gamepad pl-4"></i></h1>
       <marquee behavior="" direction="left" class="mt-2 ml-4" style="font-size: large;"><span id="date_heure"></span></marquee>
       <script type="text/javascript">window.onload = date_heure('date_heure');</script>
@@ -61,21 +62,19 @@
 
   <!-- MAIN -->
   <main class="bg-info" style="height: 100%;">
-      <div class="container pt-2">
+    <div class="container pt-2">
         <div class="row justify-content-center">
-          <button type="button" class="btn btn-dark col-12 col-sm-10 col-lg-8" id="btnNewGame" onclick="play()">Démarrer une nouvelle partie</button>
+          <button type="button" class="btn btn-dark col-12 col-sm-10 col-lg-8" id="btnNewGame" onclick="play()">Démarrer une partie</button>
         </div>
         <section id="scoreBoard" class="scoreDisplay mt-2">
         	<span class="moves">0</span>
-
             <div class="timer">
             </div>
-
             <div class="restart" onclick=startGame()>
         		<i class="fa fa-repeat"></i>
         	</div>
         </section>
-      </div>
+    </div>
 
       <div id="gameBoard" class="container mb-2">
         <ul class="deck" id="card-deck">
@@ -120,16 +119,15 @@
         <div id="popup1" class="replay">
             <div class="popup">
                 <h3>🎉 Félicitations ! Tu as gagné cette partie 😄</h3>
-                <a class="close" href=# >×</a>
+                <a class="close" href=#>×</a>
                 <div class="congratulationsText">
                     <p>Tu as réussi avec <span id=finalMove></span> en <span id=totalTime></span></p>
                 </div>
                 <button id="play-again" onclick="playAgain()">
-                    Veux-tu rejouer ?</a>
+                    <a>Veux-tu rejouer ?</a>
                 </button>
             </div>
         </div>
-
     </div>
   </main>
 <!-- End of MAIN -->
