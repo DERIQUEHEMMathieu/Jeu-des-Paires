@@ -48,13 +48,16 @@ function play() {
     startBtn.remove();
     document.getElementById("scoreBoard").style.display = "flex";
     document.getElementById("gameBoard").style.display = "flex";
-    // var sound = new Audio("1143.wav");
-    // sound.play();
-    // setTimeout(startGame(), 5000);
+    var sound = new Audio("1143.wav");
+    sound.play();
+    setTimeout(startGame(), 5000);
 }
 
 // @description function to start a new play 
 function startGame(){
+    var soundStart = new Audio ("sounds/AcidTrips.mp3");
+    soundStart.volume=0.35;
+    soundStart.play();
     // empty the openCards array
     openedCards = [];
 
@@ -82,7 +85,6 @@ function startGame(){
     clearInterval(interval);
 }
 
-
 // @description toggles open and show class to display cards
 var displayCard = function (){
     this.classList.toggle("open");
@@ -105,7 +107,6 @@ function cardOpen() {
     }
 };
 
-
 // @description when cards match
 function matched(){
     openedCards[0].classList.add("match", "disabled");
@@ -113,6 +114,9 @@ function matched(){
     openedCards[0].classList.remove("show", "open", "no-event");
     openedCards[1].classList.remove("show", "open", "no-event");
     openedCards = [];
+    var soundMatched = new Audio ("sounds/bravo.mp3");
+    soundMatched.volume=1;
+    soundMatched.play()
 }
 
 
@@ -162,7 +166,6 @@ function moveCounter(){
     }
 }
 
-
 // @description game timer
 var second = 0, minute = 0; hour = 0;
 var timer = document.querySelector(".timer");
@@ -182,7 +185,6 @@ function startTimer(){
     },1000);
 }
 
-
 // @description congratulations when all cards match, show modal and moves, time and rating
 function congratulations(){
     if (matchedCard.length == 12){
@@ -195,28 +197,27 @@ function congratulations(){
         //showing move, rating, time on modal
         document.getElementById("finalMove").innerHTML = moves + " " + 'mouvements';
         document.getElementById("totalTime").innerHTML = finalTime;
-
+        var soundCongratulations = new Audio("sounds/WeAreTheChampions.mp3");
+        soundCongratulations.play();
         //closeicon on modal
         closeModal();
     };
 }
 
-
 // @description close icon on modal
 function closeModal(){
-    closeicon.addEventListener("click", function(e){
+        closeicon.addEventListener("click", function(e){
         modal.classList.remove("show");
-        startGame();
+        soundCongratulations.stop();
+        play();
     });
 }
-
 
 // @desciption for user to play Again 
 function playAgain(){
     modal.classList.remove("show");
     startGame();
 }
-
 
 // loop to add event listeners to each card
 for (var i = 0; i < cards.length; i++){
