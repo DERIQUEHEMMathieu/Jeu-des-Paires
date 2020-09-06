@@ -63,10 +63,67 @@
   <!-- MAIN -->
   <main class="bg-info" style="height: 100%;">
     <div class="container pt-2">
-        <div class="row justify-content-center">
-          <button type="button" class="btn btn-dark col-12 col-sm-10 col-lg-8" id="btnNewGame" onclick="play()">Démarrer une partie</button>
-        </div>
+        <section id="scoreBoard" class="scoreDisplay mt-2">
+        	<span class="moves">0</span>
+            <div class="timer">
+            </div>
+            <div class="restart" onclick=startGame()>
+        		<i class="fa fa-repeat"></i>
+            </div>
+        </section>
     </div>
+    <div id="gameBoard" class="container mb-2">
+        <ul class="deck" id="card-deck">
+            <li class="card" type="diamond">
+                <i class="fa fa-diamond"></i>
+            </li>
+            <li class="card" type="plane">
+                <i class="fa fa-paper-plane-o"></i>
+            </li>
+            <li class="card match" type="anchor">
+                <i class="fa fa-anchor"></i>
+            </li>
+            <li class="card" type="bolt" >
+                <i class="fa fa-bolt"></i>
+            </li>
+            <li class="card match" type="anchor">
+                <i class="fa fa-anchor"></i>
+            </li>
+            <li class="card" type="bicycle">
+                <i class="fa fa-bicycle"></i>
+            </li>
+            <li class="card" type="diamond">
+                <i class="fa fa-diamond"></i>
+            </li>
+            <li class="card" type="bomb">
+                <i class="fa fa-bomb"></i>
+            </li>
+            <li class="card" type="bomb">
+                <i class="fa fa-bomb"></i>
+            </li>
+            <li class="card open show" type="bolt">
+                <i class="fa fa-bolt"></i>
+            </li>
+            <li class="card" type="bicycle">
+                <i class="fa fa-bicycle"></i>
+            </li>
+            <li class="card" type="plane">
+                <i class="fa fa-paper-plane-o"></i>
+            </li>
+        </ul>
+    </div>
+        <div id="popup1" class="replay">
+            <div class="popup">
+                <h3>🎉 Félicitations ! Tu as gagné cette partie 😄</h3>
+                <a class="close" href=#>×</a>
+                <div class="congratulationsText">
+                    <p>Tu as réussi avec <span id=finalMove></span> en <span id=totalTime></span></p>
+                </div>
+                <button id="play-again" onclick="playAgain()">
+                    <a>Veux-tu rejouer ?</a>
+                </button>
+            </div>
+        </div>
   </main>
 <!-- End of MAIN -->
 

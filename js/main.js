@@ -45,19 +45,11 @@ document.body.onload = startGame();
 // Function btn "Démarrer une partie"
 function play() {
     let startBtn = document.getElementById("btnNewGame");
-    startBtn.remove();
-    document.getElementById("scoreBoard").style.display = "flex";
-    document.getElementById("gameBoard").style.display = "flex";
-    var sound = new Audio("1143.wav");
-    sound.play();
-    setTimeout(startGame(), 5000);
-}
+    document.location.href="Game.html";
+};
 
 // @description function to start a new play 
 function startGame(){
-    var soundStart = new Audio ("sounds/AcidTrips.mp3");
-    soundStart.volume=0.35;
-    soundStart.play();
     // empty the openCards array
     openedCards = [];
 
@@ -78,7 +70,7 @@ function startGame(){
 
     //reset timer
     second = 0;
-    minute = 0; 
+    minute = 0;
     hour = 0;
     var timer = document.querySelector(".timer");
     timer.innerHTML = "0 mins 0 secs";
@@ -159,8 +151,11 @@ function moveCounter(){
     counter.innerHTML = moves + " " + 'mouvements';
     //start timer on first click
     if(moves == 1){
+        var soundStart = new Audio ("sounds/AcidTrips.mp3");
+        soundStart.play();
+        soundStart.volume=0.35;
         second = 0;
-        minute = 0; 
+        minute = 0;
         hour = 0;
         startTimer();
     }
@@ -199,6 +194,7 @@ function congratulations(){
         document.getElementById("totalTime").innerHTML = finalTime;
         var soundCongratulations = new Audio("sounds/WeAreTheChampions.mp3");
         soundCongratulations.play();
+        soundCongratulations.volume=1;
         //closeicon on modal
         closeModal();
     };
@@ -208,8 +204,7 @@ function congratulations(){
 function closeModal(){
         closeicon.addEventListener("click", function(e){
         modal.classList.remove("show");
-        soundCongratulations.stop();
-        play();
+        document.location.href='index.html';
     });
 }
 
