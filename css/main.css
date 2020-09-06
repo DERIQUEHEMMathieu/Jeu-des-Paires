@@ -275,14 +275,6 @@ textarea {
   }
 
   /* -- Styles for the score display -- */
-  /* #scoreBoard {
-    display: none;
-  }
-
-  #gameBoard {
-    display: none;
-  } */
-
   #play-again {
     background-color: #141214;
     padding: 0.7rem 1rem;
