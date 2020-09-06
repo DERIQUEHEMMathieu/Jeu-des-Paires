@@ -21,9 +21,9 @@ let matchedCard = document.getElementsByClassName("match");
  // array for opened cards
 var openedCards = [];
 
-// @description shuffles cards
-// @param {array}
-// @returns shuffledarray
+// Description shuffles cards
+// Param {array}
+// Returns shufflearray
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
 
@@ -39,29 +39,23 @@ function shuffle(array) {
 };
 
 
-// @description shuffles cards when page is refreshed / loads
+// Description shuffles cards when page is refreshed / loads
 document.body.onload = startGame();
 
 // Function btn "Démarrer une partie"
 function play() {
     let startBtn = document.getElementById("btnNewGame");
-    startBtn.remove();
-    document.getElementById("scoreBoard").style.display = "flex";
-    document.getElementById("gameBoard").style.display = "flex";
-    var sound = new Audio("1143.wav");
-    sound.play();
-    setTimeout(startGame(), 5000);
-}
+    var decompte = new Audio("sounds/Décompte.mp3")
+    decompte.play();
+    setTimeout(function(){document.location.href="Game.html";},4000);
+};
 
-// @description function to start a new play 
+// Description function to start a new play
 function startGame(){
-    var soundStart = new Audio ("sounds/AcidTrips.mp3");
-    soundStart.volume=0.35;
-    soundStart.play();
-    // empty the openCards array
+    // Empty the openCards array
     openedCards = [];
 
-    // shuffle deck
+    // Shuffle deck
     cards = shuffle(cards);
     // remove all exisiting classes from each card
     for (var i = 0; i < cards.length; i++){
@@ -71,21 +65,20 @@ function startGame(){
         });
         cards[i].classList.remove("show", "open", "match", "disabled");
     }
-    
-    // reset moves
+    // Reset moves
     moves = 0;
     counter.innerHTML = moves + " " + 'mouvements';
 
-    //reset timer
+    // Reset timer
     second = 0;
-    minute = 0; 
+    minute = 0;
     hour = 0;
     var timer = document.querySelector(".timer");
     timer.innerHTML = "0 mins 0 secs";
     clearInterval(interval);
 }
 
-// @description toggles open and show class to display cards
+// Description toggles open and show class to display cards
 var displayCard = function (){
     this.classList.toggle("open");
     this.classList.toggle("show");
@@ -93,7 +86,7 @@ var displayCard = function (){
 };
 
 
-// @description add opened cards to OpenedCards list and check if cards are match or not
+// Description add opened cards to OpenedCards list and check if cards are match or not
 function cardOpen() {
     openedCards.push(this);
     var len = openedCards.length;
@@ -107,7 +100,7 @@ function cardOpen() {
     }
 };
 
-// @description when cards match
+// Description when cards match
 function matched(){
     openedCards[0].classList.add("match", "disabled");
     openedCards[1].classList.add("match", "disabled");
@@ -120,7 +113,7 @@ function matched(){
 }
 
 
-// description when cards don't match
+// Description when cards don't match
 function unmatched(){
     openedCards[0].classList.add("unmatched");
     openedCards[1].classList.add("unmatched");
@@ -134,7 +127,7 @@ function unmatched(){
 }
 
 
-// @description disable cards temporarily
+// Description disable cards temporarily
 function disable(){
     Array.prototype.filter.call(cards, function(card){
         card.classList.add('disabled');
@@ -142,7 +135,7 @@ function disable(){
 }
 
 
-// @description enable cards and disable matched cards
+// Description enable cards and disable matched cards
 function enable(){
     Array.prototype.filter.call(cards, function(card){
         card.classList.remove('disabled');
@@ -153,26 +146,30 @@ function enable(){
 }
 
 
-// @description count player's moves
+
+// Description count player's moves
 function moveCounter(){
     moves++;
     counter.innerHTML = moves + " " + 'mouvements';
-    //start timer on first click
+    // Start timer on first click
     if(moves == 1){
+        var soundStart = new Audio ("sounds/AcidTrips.mp3");
+        soundStart.volume=0.35;
+        soundStart.play();
         second = 0;
-        minute = 0; 
+        minute = 0;
         hour = 0;
         startTimer();
     }
 }
 
-// @description game timer
+// Description game timer
 var second = 0, minute = 0; hour = 0;
 var timer = document.querySelector(".timer");
 var interval;
 function startTimer(){
     interval = setInterval(function(){
-        timer.innerHTML = minute + " " + "mins" + " " +second + " " + "secs";
+        timer.innerHTML = minute + " " + "mins" + " " + second + " " + "secs";
         second++;
         if(second == 60){
             minute++;
@@ -185,44 +182,68 @@ function startTimer(){
     },1000);
 }
 
-// @description congratulations when all cards match, show modal and moves, time and rating
+// Description congratulations when all cards match, show modal and moves, time and rating
 function congratulations(){
     if (matchedCard.length == 12){
         clearInterval(interval);
         finalTime = timer.innerHTML;
-
-        // show congratulations modal
+        // Show congratulations modal
         modal.classList.add("show");
-
-        //showing move, rating, time on modal
+        // Showing move, rating, time on modal
         document.getElementById("finalMove").innerHTML = moves + " " + 'mouvements';
         document.getElementById("totalTime").innerHTML = finalTime;
         var soundCongratulations = new Audio("sounds/WeAreTheChampions.mp3");
         soundCongratulations.play();
-        //closeicon on modal
+        soundCongratulations.volume=1;
+        // Closeicon on modal
         closeModal();
     };
 }
 
-// @description close icon on modal
+// Description close icon on modal
 function closeModal(){
         closeicon.addEventListener("click", function(e){
         modal.classList.remove("show");
-        soundCongratulations.stop();
-        play();
+        document.location.href='index.html';
     });
 }
 
-// @desciption for user to play Again 
+// Desciption for user to play Again
 function playAgain(){
     modal.classList.remove("show");
-    startGame();
+    document.location.reload(true);
 }
 
-// loop to add event listeners to each card
+// Loop to add event listeners to each card
 for (var i = 0; i < cards.length; i++){
     card = cards[i];
     card.addEventListener("click", displayCard);
     card.addEventListener("click", cardOpen);
     card.addEventListener("click",congratulations);
 };
+
+// Security
+// Function to disable right click
+document.oncontextmenu = new Function("return false");
+
+// Function to deactivate selection
+function fFalse(){
+    return false;
+}
+function fTrue(){
+    return true;
+}
+document.onselectstart = new Function ("return false");
+if(window.sidebar){
+    document.onmousedown = fFalse;
+    document.onclick = fTrue;
+}
+
+// Fun function to create an image that follows the cursor
+document.onmousemove = suitsouris;
+function suitsouris(evenement){
+    var x =  evenement.pageX;
+    var y =  evenement.pageY;
+    document.getElementById("imageSuitSouris").style.left = (x+1)+'px';
+    document.getElementById("imageSuitSouris").style.top  = (y+1)+'px';
+}

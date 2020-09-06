@@ -110,8 +110,8 @@ textarea {
   }
 
   .deck .card {
-    height: 3.7rem;
-    width: 3.7rem;
+    height: 3.5rem;
+    width: 3.5rem;
     margin: 0.2rem 0.2rem;
     background: #141214;
     font-size: 0;
@@ -275,14 +275,6 @@ textarea {
   }
 
   /* -- Styles for the score display -- */
-  #scoreBoard {
-    display: none;
-  }
-
-  #gameBoard {
-    display: none;
-  }
-
   #play-again {
     background-color: #141214;
     padding: 0.7rem 1rem;
