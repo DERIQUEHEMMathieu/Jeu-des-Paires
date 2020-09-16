@@ -146,14 +146,13 @@ function enable(){
 }
 
 
-
+var soundStart = new Audio ("sounds/AcidTrips.mp3");
 // Description count player's moves
 function moveCounter(){
     moves++;
     counter.innerHTML = moves + " " + 'mouvements';
     // Start timer on first click
     if(moves == 1){
-        var soundStart = new Audio ("sounds/AcidTrips.mp3");
         soundStart.volume=0.35;
         soundStart.play();
         second = 0;
@@ -185,6 +184,7 @@ function startTimer(){
 // Description congratulations when all cards match, show modal and moves, time and rating
 function congratulations(){
     if (matchedCard.length == 12){
+        soundStart.pause();
         clearInterval(interval);
         finalTime = timer.innerHTML;
         // Show congratulations modal
@@ -227,23 +227,23 @@ for (var i = 0; i < cards.length; i++){
 document.oncontextmenu = new Function("return false");
 
 // Function to deactivate selection
-function fFalse(){
-    return false;
-}
-function fTrue(){
-    return true;
-}
-document.onselectstart = new Function ("return false");
-if(window.sidebar){
-    document.onmousedown = fFalse;
-    document.onclick = fTrue;
-}
+// function fFalse(){
+//     return false;
+// }
+// function fTrue(){
+//     return true;
+// }
+// document.onselectstart = new Function ("return false");
+// if(window.sidebar){
+//     document.onmousedown = fFalse;
+//     document.onclick = fTrue;
+// }
 
 // Fun function to create an image that follows the cursor
-document.onmousemove = suitsouris;
-function suitsouris(evenement){
-    var x =  evenement.pageX;
-    var y =  evenement.pageY;
-    document.getElementById("imageSuitSouris").style.left = (x+1)+'px';
-    document.getElementById("imageSuitSouris").style.top  = (y+1)+'px';
-}
+// document.onmousemove = suitsouris;
+// function suitsouris(evenement){
+//     var x =  evenement.pageX;
+//     var y =  evenement.pageY;
+//     document.getElementById("imageSuitSouris").style.left = (x+1)+'px';
+//     document.getElementById("imageSuitSouris").style.top  = (y+1)+'px';
+// }
