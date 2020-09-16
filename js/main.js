@@ -224,20 +224,20 @@ for (var i = 0; i < cards.length; i++){
 
 // Security
 // Function to disable right click
-document.oncontextmenu = new Function("return false");
+// document.oncontextmenu = new Function("return false");
 
 // Function to deactivate selection
-// function fFalse(){
-//     return false;
-// }
-// function fTrue(){
-//     return true;
-// }
-// document.onselectstart = new Function ("return false");
-// if(window.sidebar){
-//     document.onmousedown = fFalse;
-//     document.onclick = fTrue;
-// }
+function fFalse(){
+    return false;
+}
+function fTrue(){
+    return true;
+}
+document.onselectstart = new Function ("return false");
+if(window.sidebar){
+    document.onmousedown = fFalse;
+    document.onclick = fTrue;
+}
 
 // Fun function to create an image that follows the cursor
 // document.onmousemove = suitsouris;
